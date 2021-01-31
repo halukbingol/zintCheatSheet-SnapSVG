@@ -1,0 +1,386 @@
+\documentclass[a4paper,10pt,landscape]{article}
+
+
+
+
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ V page setup
+	\pagestyle{empty}
+	
+	\setlength{\oddsidemargin}{-1.5cm}
+	\setlength{\evensidemargin}{-1.5cm}
+	\setlength{\textwidth}{27.7cm}
+	\setlength{\textheight}{19cm}
+	
+	\setlength{\topmargin}{-1.5cm}
+	\setlength{\headheight}{0cm}
+	\setlength{\headsep}{0cm}
+	
+	
+	
+	
+	% Redefine section commands to use less space
+	\makeatletter
+	\renewcommand{\section}{\@startsection{section}{1}{0mm}%
+	                                {-1ex plus -.5ex minus -.2ex}%
+	                                {0.5ex plus .2ex}%x
+	                                {\normalfont\large\bfseries}}
+	\renewcommand{\subsection}{\@startsection{subsection}{2}{0mm}%
+	                                {-1explus -.5ex minus -.2ex}%
+	                                {0.5ex plus .2ex}%
+	                                {\normalfont\normalsize\bfseries}}
+	\renewcommand\subsubsection{\@startsection{subsubsection}{3}{0mm}%
+	                                {-1ex plus -.5ex minus -.2ex}%
+	                                {1ex plus .2ex}%
+	                                {\normalfont\small\bfseries}}
+	\makeatother
+	
+	% Define BibTeX command
+	\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+	    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+	
+	% Don't print section numbers
+	%\setcounter{secnumdepth}{1}
+	%\setcounter{secnumdepth}{0}
+	
+	\setlength{\parindent}{0pt}
+	\setlength{\parskip}{0pt plus 0.5ex}
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ A
+
+
+
+
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ V title part
+	\usepackage[iso]{datetime}
+	\newcommand{\hbTimeStamp}{{\color{red}v\today T\currenttime}} % 
+
+	\usepackage[colorlinks=true,linkcolor=red,urlcolor=blue,citecolor=red]%
+		{hyperref}
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ A
+
+
+
+
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ V color
+	\usepackage{color}
+		\definecolor{darkred}{rgb}{0.8,0.1,0.1}
+%		\definecolor{darkgreen}{rgb}{0,0.5,0}
+%		\definecolor{darkblue}{rgb}{0,0,0.5}
+		\definecolor{colorSep}{rgb}{0.8,0.8,0.8}
+	\newcommand{\hSep}{{\color{colorSep}\hrule}}
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ A
+
+
+
+
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ V references
+	\newcommand{\reffig}[1]{Fig.~\ref{#1}}
+	\newcommand{\reftbl}[1]{Table~\ref{#1}}
+	\newcommand{\refsec}[1]{Sec.~\ref{#1}}
+	\newcommand{\refdef}[1]{Definition~\ref{#1}}
+	\newcommand{\refeq}[1]{Eq.~\ref{#1}}
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ A
+
+
+
+
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ V
+	\usepackage{multicol}
+	\usepackage{enumerate}
+	\usepackage{ams math}
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ A
+
+
+
+
+%: specific ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ V specific
+	\newcommand{\hCode}[1]{\ensuremath{\mathtt{#1}}} 
+	\newcommand{\hCodeQ}[1]{\ensuremath{``\hCode{#1}''}} 
+	%
+	\newcommand{\sLine}{\hCode{line}}
+	\newcommand{\sPolyline}{\hCode{polyline}}
+	\newcommand{\sRect}{\hCode{rect}}
+	\newcommand{\sCircle}{\hCode{circle}}
+	\newcommand{\sEllipse}{\hCode{ellipse}}
+	\newcommand{\sPolygon}{\hCode{polygon}}
+	\newcommand{\sText}{\hCode{text}}
+	\newcommand{\sPath}{\hCode{path}}
+	\newcommand{\sM}{\hCode{M}}
+	\newcommand{\sV}{\hCode{V}}
+	\newcommand{\sH}{\hCode{H}}
+	\newcommand{\sZ}{\hCode{Z}}
+	\newcommand{\sC}{\hCode{C}}
+	\newcommand{\sA}{\hCode{A}}
+	\newcommand{\sL}{\hCode{L}}
+	\newcommand{\sS}{\hCode{S}}
+	\newcommand{\sQ}{\hCode{Q}}
+	\newcommand{\sT}{\hCode{T}}	
+	\newcommand{\sAttr}{\hCode{attr}}
+%	\newcommand{aaa}{\hCode{aaa}}
+%	\newcommand{aaa}{\hCode{aaa}}
+	
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ A
+
+
+
+
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
+\begin{document}
+
+\raggedright
+\footnotesize
+
+
+
+
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
+\begin{multicols}{3} % ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  column-3
+	\setlength{\columnseprule}{0.25pt}
+	\setlength{\premulticols}{1pt}
+	\setlength{\postmulticols}{1pt}
+	\setlength{\multicolsep}{1pt}
+	\setlength{\columnsep}{2pt}
+
+
+
+
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ V title
+\begin{center}
+	\Large{\textbf{A Cheat Sheet for SnapSVG}}\\
+	Haluk O. Bingol\\
+	\small{
+		\href
+		     	{bingol@boun.edu.tr}
+		     	{bingol@boun.edu.tr}
+	}\\
+	\small{
+		\href
+			{https://github.com/halukbingol/zintCheatSheet-SnapSVG}
+			{https://github.com/halukbingol/zintCheatSheet-SnapSVG}
+	}\\
+	\small{\hbTimeStamp}
+\end{center}
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ A
+
+
+
+
+%; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ V conventions
+\section{Conventions}
+\label{sec:Conventions}
+
+\begin{tabular}{@{}ll@{}}
+	\hCode{codeWord}	&code word\\
+	$variable$	&variable\\
+	$attrNameValue$
+		&attribute name-value ``$arrtName\!: arrtValue,$''
+%			(\refsec{sec:attributeNameValue})
+		\\
+	$arrtName$	&attribute name
+		(\refsec{sec:attributeNameValue})\\
+	$arrtValue$	&attribute value
+		(\refsec{sec:attributeNameValue})\\
+	%
+	$object$	&SVG object\\
+	$x_{i}, y_{i}$	&point $P_{i}$ at $(x_{i}, y_{i})$\\
+	$x_{i}^{c}, y_{i}^{c}$	&control point $P_{i}^{c}$  at $(x_{i}^{c}, y_{i}^{c})$\\
+	$cx, cy$	&center point $P_{C}$  at $(cx, cy)$\\
+	$w$	&width\\
+	$h$	&height\\
+	$r$	&radius\\
+	$color$	&color 	(\refsec{sec:attributeValues})\\
+	$number$	&number\\
+	$string$	&string in qoute \hCodeQ{a} or \hCode{'a'}\\
+	$r_{x}$	&aaa\\
+	$r_{y}$	&aaa\\
+	$\beta_{r}$	&x axis rotation 	(\refsec{sec:pathdescription})\\
+	$f_{la}$	&large arc flag 	(\refsec{sec:pathdescription})\\
+	$f_{s}$	&sweep flag 	(\refsec{sec:pathdescription})\\
+%	$aaa$	&aaa\\
+%	$aaa$	&aaa\\
+%	$aaa$	&aaa\\
+\ \ \ \ \
+\end{tabular}
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ A
+
+
+
+
+%: ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ V Objects
+\section{Objects}
+\label{sec:Objects}
+
+	$\sLine(x_{1}, y_{1}, x_{2}, y_{2})$\\
+	$\sRect(x_{1}, y_{1}, w, h)$\\
+	$\sCircle(cx, cy, r)$\\
+	$\sEllipse(x_{1}, y_{1}, x_{2}, y_{2})$\\
+	$\sPolyline(x_{1}, y_{1}, x_{2}, y_{2}, \dotsc, x_{N}, y_{N})$\\
+	$\sPolygon([x_{1}, y_{1}, x_{2}, y_{2}, \dotsc, x_{N}, y_{N}])$\\
+	$\sPath$	(\refsec{sec:path})\\
+	$\sText$	(\refsec{sec:text})\\
+%	$aaa$\\
+%	$aaa$\\
+%	$aaa$\\
+%	$aaa$\\
+
+
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+\subsection{Attributes}
+
+\begin{tabular}{@{}ll@{}}
+	\hCode{stroke}	&$color$\\
+	\hCode{strokeWidth}	&$number$\\
+	\hCode{fill}	&$color$\\
+\end{tabular}
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ A
+
+
+
+
+%: ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ V path
+\section{Path}
+\label{sec:path}
+
+	$\sPath(pathDescription)$\\
+	See
+	\href
+		{https://www.w3.org/TR/SVG/paths.html#PathData}
+		{https://www.w3.org/TR/SVG/paths.html\#PathData}
+
+
+
+
+\subsection{Path Description}
+\label{sec:pathdescription}
+
+\begin{tabular}{@{}ll@{}}
+	$\sM\ x_{1}\ y_{1}$	&move to point $P_{1}$ at $(x_{1}, y_{1})$\\
+	$\sZ$	&close path\\
+	$\sL\ x_{2}\ y_{2}$	&line to point $P_{2}$ at $(x_{2}, y_{2})$\\
+	$\sH\ x_{2}$	&horizontal line to $P_{2}$ at $(x_{2}, y_{1})$\\
+	$\sV\ y_{i}$	&vertical line to $P_{2}$ at $(x_{1}, y_{2})$\\
+	$\sC\ x_{1}^{c}\ y_{1}^{c}\ x_{2}^{c}\ y_{2}^{c}\ x_{2}\ y_{2}$
+		&curve to $P_{2}$ with control points $P_{1}^{c}$ and $P_{2}^{c}$\\
+	$\sS\ x_{2}\ y_{2}\ ??$	&smooth curve to point $P_{2}$ at $(x_{2}, y_{2})$\\
+	$\sQ\ x_{1}^{c}\ y_{1}^{c}\ x_{2}\ y_{2}$
+		&quadratic Bezier to point $P_{2}$ at $(x_{2}, y_{2})$\\
+	$\sT\ ??$	&smooth quadratic Bezier to\\
+	$\sA\ r_{x}\ r_{y}\ \beta_{r}\ f_{la}\ f_{s}\ x_{2}\ y_{2}$
+		&elliptic arc ending at $(x_{2}, y_{2})$\\
+%	$aaa$	&aaa\\
+%	$aaa$	&aaa\\
+\end{tabular}
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ A
+
+
+
+
+%: ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ V text
+\section{Text}
+\label{sec:text}
+
+	$\sText(x_{i}, y_{i}, string)$
+
+\begin{tabular}{@{}ll@{}}
+	$x_{i}, y_{i}$	&starting point at $(x_{i}, y_{i})$\\
+	$string$	&text in qoute\\
+%	$aaa$	&aaa\\
+%	$aaa$	&aaa\\
+%	$aaa$	&aaa\\
+%	$aaa$	&aaa\\
+\end{tabular}
+
+
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+\subsection{Attributes}
+
+\begin{tabular}{@{}ll@{}}
+	\hCode{fontFamily}	&\hCodeQ{Sans\!-\!Serif}\\
+	\hCode{fontSize}	&\hCodeQ{22px}\\
+	\hCode{fontStyle}	&$fontStyle$\\
+	\hCode{fill}	&$color$\\
+%	\hCode{aaa}	&$aaa$\\
+%	\hCode{aaa}	&$aaa$\\
+%	\hCode{aaa}	&$aaa$\\
+%	\hCode{aaa}	&$aaa$\\
+%	$aaa$	&aaa\\
+%	$aaa$	&aaa\\
+\end{tabular}
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ A
+
+
+
+
+%: ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ V attribute
+\section{Attribute}
+\label{sec:attribute}
+
+\begin{tabular}{@{}ll@{}}
+	$element.\sAttr(\{attrName:\ attrValue, \dotsc \})$	&set value\\
+	$a = element.\sAttr().attrName;$	&get value\\
+%	$aaa$	&aaa\\
+\end{tabular}
+
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
+\subsection{Some Attribute Names}
+\label{sec:attributeNameValue}
+
+\begin{tabular}{@{}ll@{}}
+	\hCode{x}	&$number$\\
+	\hCode{y}	&$number$\\
+	\hCode{cx}	&$number$\\
+	\hCode{cy}	&$number$\\
+	\hCode{cursor}	&$cursor$\\
+	\hCode{stroke}	&$color$\\
+	\hCode{fill}	&$color$\\
+	\hCode{fontFamily}	&$fontFamily$\\
+	\hCode{fontSize}	&$fontSize$\\
+%	\hCode{aaa}	&aaa\\
+%	\hCode{aaa}	&aaa\\
+%	\hCode{aaa}	&aaa\\
+
+%	$aaa$	&aaa\\
+%	$aaa$	&aaa\\
+\end{tabular}
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
+\subsection{Some Attribute Values}
+\label{sec:attributeValues}
+
+\begin{tabular}{@{}ll@{}}
+	$color$
+		&
+		\hCodeQ{red},
+		\hCodeQ{blue}, 
+		\hCodeQ{green},\\
+	$cursor$
+		&
+		\hCodeQ{pointer},\\
+	$fontFamily$
+		&
+		\hCodeQ{Sans\!-\!Serif}\\
+	$fontSize$
+		&
+		\hCodeQ{12px}, $\dotsc$\\
+	$fontStyle$
+		&
+		\hCodeQ{normal}\\
+	$fontWeight$
+		&
+		\hCodeQ{bold}\\
+%	$aaa$
+%		&
+%		\hCodeQ{aaa}\\
+%	$aaa$
+%		&
+%		\hCodeQ{aaa}\\
+\end{tabular}
+
+
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ A
+
+
+
+
+
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
+\end{multicols} % ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  column-3
+\end{document}
