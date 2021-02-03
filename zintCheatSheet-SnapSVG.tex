@@ -94,7 +94,9 @@
 
 %: specific ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ V specific
 	\newcommand{\hCode}[1]{\ensuremath{\mathtt{#1}}} 
-	\newcommand{\hCodeQ}[1]{\ensuremath{``\hCode{#1}''}} 
+%	\newcommand{\hCodeQ}[1]{\ensuremath{``\hCode{#1}''}} 
+	\newcommand{\hCodeQ}[1]{``\hCode{#1}''}	% in quote
+	\newcommand{\hCodeQD}[1]{\hCodeQ{\underline{#1}}} % default value
 	%
 	\newcommand{\sLine}{\hCode{line}}
 	\newcommand{\sPolyline}{\hCode{polyline}}
@@ -187,8 +189,8 @@
 	$w$	&width\\
 	$h$	&height\\
 	$r$	&radius\\
-	$color$	&color 	(\refsec{sec:attributeValues})\\
-	$number$	&number\\
+%	$color$	&color 	(\refsec{sec:attributeValues})\\
+%	$number$	&number\\
 	$string$	&string in qoute \hCodeQ{a} or \hCode{'a'}\\
 	$r_{x}$	&aaa\\
 	$r_{y}$	&aaa\\
@@ -225,10 +227,12 @@
 
 % ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 \subsection{Attributes}
+\label{sec:objectAttributes}
 
 \begin{tabular}{@{}ll@{}}
 	\hCode{stroke}	&$color$\\
 	\hCode{strokeWidth}	&$number$\\
+	\hCode{strokeOpacity}	&$opacity$\\
 	\hCode{fill}	&$color$\\
 \end{tabular}
 % ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ A
@@ -269,6 +273,18 @@
 %	$aaa$	&aaa\\
 %	$aaa$	&aaa\\
 \end{tabular}
+
+
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+\subsection{Attributes}
+
+\begin{tabular}{@{}ll@{}}
+	&in addition to \refsec{sec:objectAttributes}\\
+	\hCode{strokeDasharray}	&\hCodeQ{5, 1}\\
+%	\hCode{aaa}	&$aaa$\\
+%	\hCode{aaa}	&$aaa$\\
+%	\hCode{aaa}	&$aaa$\\
+\end{tabular}
 % ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ A
 
 
@@ -294,6 +310,7 @@
 \subsection{Attributes}
 
 \begin{tabular}{@{}ll@{}}
+	&in addition to \refsec{sec:objectAttributes}\\
 	\hCode{fontFamily}	&\hCodeQ{Sans\!-\!Serif}\\
 	\hCode{fontSize}	&\hCodeQ{22px}\\
 	\hCode{fontStyle}	&$fontStyle$\\
@@ -346,6 +363,9 @@
 \label{sec:attributeValues}
 
 \begin{tabular}{@{}ll@{}}
+	$number$
+		&
+		\hCodeQ{any\_positive\_number}\\
 	$color$
 		&
 		\hCodeQ{red},
@@ -357,15 +377,29 @@
 	$fontFamily$
 		&
 		\hCodeQ{Sans\!-\!Serif}\\
+	$fontStyle$
+		&
+		\hCodeQD{normal}, \hCodeQ{italic}, \hCodeQ{oblique}, \hCodeQ{inherit}\\
 	$fontSize$
 		&
 		\hCodeQ{12px}, $\dotsc$\\
-	$fontStyle$
-		&
-		\hCodeQ{normal}\\
 	$fontWeight$
 		&
-		\hCodeQ{bold}\\
+		\hCodeQD{normal},
+		\hCodeQ{bold},
+		\hCodeQ{bolder},
+		\hCodeQ{lighter},\\
+		&
+		\hCodeQ{100},
+		$\dotsc$,
+		\hCodeQ{900}
+		\\
+	$opacity$
+		&
+		\hCodeQ{n} where $0 \le n \le 1$\\
+%	$aaa$
+%		&
+%		\hCodeQ{aaa}\\
 %	$aaa$
 %		&
 %		\hCodeQ{aaa}\\
